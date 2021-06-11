@@ -48,13 +48,28 @@ Correct Answer: ${correctAnswers[3]}
 
 5) ${questions[4]}
 Your Answer: ${candidateAnswers[4]}
-Correct Answer: ${correctAnswers[4]}
-`)
+Correct Answer: ${correctAnswers[4]}`);
 
-  let grade;
-  
+  let rightAnswers = 0;
 
-  return grade;
+  for (j = 0; j < correctAnswers.length; j++) {
+    if (candidateAnswers[j].toUpperCase() === correctAnswers[j].toUpperCase()) {
+      rightAnswers += 1;
+    }
+  }
+
+  let grade = 0;
+  let status = "FAILED";
+
+  grade = ((rightAnswers / 5) * 100);
+    if (grade >= 80) {
+      status = "PASSED";
+    }
+
+
+console.log(`
+>>> Overall Grade: ${grade}% (${rightAnswers} of 5 responses correct) <<<
+>>> Status: ${status} <<<`);
 }
 
 function runProgram() {
